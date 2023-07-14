@@ -1,0 +1,1 @@
+import"./Layout.astro_astro_type_script_index_0_lang.98d0b47b.js";const e=localStorage.getItem("email-subscribe");document.querySelector("#email-subs").textContent=e;document.getElementById("btn-dismiss").addEventListener("click",t=>{localStorage.removeItem("subscribe"),localStorage.removeItem("email-subs"),window.location.href="/"});
