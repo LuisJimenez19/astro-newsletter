@@ -1,0 +1,1 @@
+window.addEventListener("DOMContentLoaded",o=>{const e=JSON.parse(localStorage.getItem("subscribe"));e&&window.location.pathname=="/"?window.location.href="/success":window.location.pathname=="/success"&&!e&&(window.location.href="/")});

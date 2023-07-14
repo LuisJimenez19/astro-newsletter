@@ -94,7 +94,8 @@ import Button from "../components/Button.astro";
 </style>
 
 <script>
-  import { validateEmail } from "../utils";
+  import { BASE_URL } from "../../config";
+import { validateEmail } from "../utils";
 
   const form = document.getElementById("form-suscribe");
   const input = form.querySelector("input");
@@ -120,7 +121,7 @@ import Button from "../components/Button.astro";
       input.classList.add("success");
       /* Simula la carga a una base de datos */
       setTimeout(() => {
-        window.location.href = "/success";
+        window.location.href = `${BASE_URL}/success`;
       }, 350);
     }
   });

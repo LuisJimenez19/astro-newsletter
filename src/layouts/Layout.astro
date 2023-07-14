@@ -33,13 +33,18 @@ import favicon from "../../public/favicon.svg";
 </style>
 <!-- JAVASCRIPT -->
 <script>
+  import { BASE_URL } from "../../config";
+
   window.addEventListener("DOMContentLoaded", (event) => {
     const subscribed = JSON.parse(localStorage.getItem("subscribe"));
 
     if (subscribed && window.location.pathname == "/") {
-      window.location.href = "/success";
-    } else if (window.location.pathname == "/success" && !subscribed) {
-      window.location.href = "/";
+      window.location.href = `${BASE_URL}/success`;
+    } else if (
+      window.location.pathname == `${BASE_URL}/success` &&
+      !subscribed
+    ) {
+      window.location.href = `${BASE_URL}/`;
     }
   });
 </script>
