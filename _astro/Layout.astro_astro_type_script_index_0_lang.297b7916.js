@@ -1,0 +1,1 @@
+const e="/astro-newsletter";window.addEventListener("DOMContentLoaded",t=>{const o=JSON.parse(localStorage.getItem("subscribe"));o&&window.location.pathname=="/"?window.location.href=`${e}/success`:window.location.pathname==`${e}/success`&&!o&&(window.location.href=`${e}/`)});export{e as B};
