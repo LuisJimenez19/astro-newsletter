@@ -1,0 +1,41 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import checkSucces from "../assets/images/icon-success.svg";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="Success">
+  <div
+    class="w-11/12 min-h-[80vh] flex flex-col justify-center m-auto md:bg-white md:w-[500px] md:min-h-[520px] md:p-[65px] md:rounded-2xl md:animate-fade-in"
+  >
+    <div class="flex-1 relative animate-up-to-down">
+      <img class="absolute bottom-0" src={checkSucces} alt="image check" />
+    </div>
+    <div class="flex flex-col flex-1 justify-between animate-down-to-up">
+      <div class="flex flex-col gap-7 mt-10">
+        <h1 class="text-dark-slate-grey text-5xl font-robotoBold">
+          Thanks for subscribing!
+        </h1>
+        <p class="font-robotoRegular">
+          A confirmation email has been sent to <b
+            id="email-subs"
+            class="font-robotoBold">ash@loremcompany.com.</b
+          > Please open it and click the button inside to confirm your subscription.
+        </p>
+      </div>
+      <Button id="btn-dismiss" text="Dismiss message" />
+    </div>
+  </div>
+</Layout>
+
+<script>
+  const email = localStorage.getItem("email-subscribe");
+  document.querySelector("#email-subs").textContent = email;
+
+  document.getElementById("btn-dismiss").addEventListener("click", (e) => {
+    localStorage.removeItem("subscribe");
+    localStorage.removeItem("email-subs");
+    window.location.href = "/";
+  });
+</script>

@@ -1,0 +1,136 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+import checkList from "../assets/images/icon-list.svg";
+import Button from "../components/Button.astro";
+---
+
+<Layout title="suscribe newsletter">
+  <!-- TARJETA PRINCIPAL -->
+  <main
+    class="flex flex-col md:flex-row-reverse gap-6 md:w-11/12 md:max-w-[930px] md:h-[620px] md:bg-white md:p-5 md:rounded-3xl md:animate-fade-in"
+  >
+    <div class="image md:flex-1 animate-up-to-down md:animate-none"></div>
+    <section
+      class="flex flex-col md:flex-1 gap-4 w-11/12 mx-auto font-robotoRegular md:p-4 md:justify-center animate-down-to-up md:animate-none"
+    >
+      <h1 class="text-[43px] font-robotoBold">Stay updated!</h1>
+      <p>Join 60,000+ product managers receiving monthly updates on:</p>
+      <ul class="flex flex-col gap-3">
+        <li class="flex place-items-start gap-3">
+          <img src={checkList} alt="" />Product discovery and building what
+          matters
+        </li>
+        <li class="flex place-items-start gap-3">
+          <img src={checkList} alt="" />Measuring to ensure updates are a
+          success
+        </li>
+        <li class="flex place-items-start gap-3">
+          <img src={checkList} alt="" />And much more!
+        </li>
+      </ul>
+
+      <form id="form-suscribe" class="flex flex-col gap-3" action="">
+        <label class="flex flex-col gap-2" for="email">
+          <span
+            class="text-sm font-robotoBold tracking-wider flex justify-between"
+            ><small>Email address</small>
+            <small
+              id="error-email"
+              class="text-tomato h-0 overflow-hidden transition-all"
+              >Valid email required</small
+            >
+          </span>
+          <input
+            class="transition outline-none py-4 px-5 border rounded-lg focus:border-dark-slate-grey"
+            type="text"
+            id="email"
+            autocomplete="off"
+            placeholder="email@company.com"
+          />
+        </label>
+        <Button id="btn-success" text="Suscribe to monthly newsletter" />
+      </form>
+    </section>
+  </main>
+</Layout>
+<style>
+  .image {
+    background-image: url("../assets/images/illustration-sign-up-mobile.svg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 282px;
+  }
+  @media (min-width: 768px) {
+    .image {
+      background-image: url("../assets/images/illustration-sign-up-desktop.svg");
+      height: auto;
+    }
+  }
+  .success {
+    margin: 0 auto;
+    animation: success 0.2s forwards !important;
+  }
+  @keyframes success {
+    0% {
+      width: 90%;
+    }
+    100% {
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      color: transparent;
+      border-radius: 50%;
+
+      border: 1px solid hsl(4, 100%, 67%);
+      background-color: hsl(4, 100%, 67%);
+      background-image: url("../assets/images/icon-list.svg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+</style>
+
+<script>
+  import { validateEmail } from "../utils";
+
+  const form = document.getElementById("form-suscribe");
+  const input = form.querySelector("input");
+  const errorEmail = document.getElementById("error-email");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const value = input.value;
+    /* Esta vació o es un email incorrecto */
+    if (!value || !validateEmail(value)) {
+      /* estilos al input */
+      input.classList.add(
+        "border-tomato",
+        "text-tomato",
+        "bg-gradient-rose-opacity"
+      );
+      errorEmail.classList.add("h-4");
+      /* Si esta todo ok */
+    } else {
+      localStorage.setItem("subscribe", JSON.stringify(true));
+      localStorage.setItem("email-subscribe", value);
+
+      input.classList.add("success");
+      /* Simula la carga a una base de datos */
+      setTimeout(() => {
+        window.location.href = "/success";
+      }, 350);
+    }
+  });
+  /* Reinica los errores */
+  input.addEventListener("focus", (e) => {
+    input.classList.remove(
+      "border-tomato",
+      "text-tomato",
+      "bg-gradient-rose-opacity"
+    );
+    errorEmail.classList.remove("h-4");
+  });
+</script>
