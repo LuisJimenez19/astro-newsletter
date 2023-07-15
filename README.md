@@ -46,8 +46,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [Source](https://github.com/LuisJimenez19/astro-newsletter)
+- Live Site URL: [Netlify](https://astro-newsletter.netlify.app/)
 
 
 ### Built with
@@ -56,7 +56,7 @@ Users should be able to:
 - CSS custom and tailwindCSS
 - Flexbox
 - Mobile-first workflow
-- [Astro](https://astro.build/) - React framework
+- [Astro](https://astro.build/) - Framework SSG
 - [tailwindCSS](https://tailwindcss.com/) - For styles
 
 
